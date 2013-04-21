@@ -1,0 +1,14 @@
+<!-- app/views/tasks/index.html.erb -->
+<script type="text/javascript">
+  $(function () {
+    // start me up!
+    
+    // Preload, or *bootstrap* initial task data.
+    var initialTasks = <%= Task.all.to_json %>;
+    
+    window.TD.initialize(
+      $("body")[0],
+      initialTasks
+    );
+  });
+</script>
