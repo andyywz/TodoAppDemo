@@ -2,7 +2,9 @@
 // Libraries from gems:
 //= require jquery
 //= require jquery_ujs
-//= require backbone-rails
+//= require ./underscore
+//= require ./backbone
+//= require ./backbone-relational
 //
 // Your top-level namespace:
 //= require todo
