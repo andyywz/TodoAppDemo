@@ -1,3 +1,4 @@
+// app/assets/javascript/todo.js
 window.TD = {
   // we'll eventually store Backbone classes inside of these namespaces
   Models: {},
@@ -9,7 +10,10 @@ window.TD = {
     // we'll call D.initialize(rootEl, initialTasks)from our HTML to
     // kick-off the JS client code.
     
-    console.log("Acheivement Unlocked: JS Client Code Runs!")
-    console.log(initialTasks);
+    var tasksListView = new TD.Views.TasksListView({
+      collection: initialTasks
+    });
+    
+    $(rootEl).html(tasksListView.render().$el);
   }
 };

@@ -4,7 +4,7 @@
     // start me up!
     
     // Preload, or *bootstrap* initial task data.
-    var initialTasks = <%= Task.all.to_json %>;
+    var initialTasks = <%= Task.all.to_json.html_safe %>;
     
     window.TD.initialize(
       $("body")[0],
