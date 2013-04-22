@@ -1,7 +1,8 @@
 // app/assets/javascript/views/new_task_view.js
 TD.Views.NewTaskView = Backbone.View.extend({
   events: {
-    "click button": "save"
+    "click button.submit": "submit",
+    "click button.cancel": "cancel"
   },
   
   render: function () {
@@ -12,7 +13,7 @@ TD.Views.NewTaskView = Backbone.View.extend({
     return that;
   },
   
-  save: function () {
+  submit: function () {
     var that = this;
     
     var task = new TD.Models.Task({
@@ -21,6 +22,10 @@ TD.Views.NewTaskView = Backbone.View.extend({
     
     that.collection.add(task);
     task.save();
+    Backbone.history.navigate("#/");
+  },
+  
+  cancel: function () {
     Backbone.history.navigate("#/");
   }
 });

@@ -1,4 +1,7 @@
 <!-- app/views/tasks/index.html.erb -->
+<div id="sidebar" style="float: left;"></div>
+<div id="content" style="float: left;"></div>
+
 <script type="text/javascript">
   $(function () {
     // start me up!
@@ -7,7 +10,8 @@
     var tasksData = <%= Task.all.to_json.html_safe %>;
     
     window.TD.initialize(
-      $("body")[0],
+      $("#sidebar"),
+      $("#content"),
       tasksData
     );
   });
