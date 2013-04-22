@@ -1,0 +1,9 @@
+<!-- app/assets/templates/tasks/list.jst.ejs -->
+
+<ul>
+  <% _(tasks).each(function (task) { %>
+    <li class="task" data-id="<%= task.id %>">
+      <%= task.title %>
+    </li>
+  <% }); %>
+</ul>

@@ -1,3 +1,4 @@
+// app/assets/javascripts/application.js
 // Libraries from gems:
 //= require jquery
 //= require jquery_ujs
@@ -11,6 +12,8 @@
 //= require_tree ./collections
 //= require_tree ./routers
 //= require_tree ./views
+// EJS Templates
+//= require_tree ../templates
 //
 // Catch-all for other Javascripts:
 //= require_tree .
