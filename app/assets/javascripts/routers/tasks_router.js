@@ -21,6 +21,16 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
   },
   
   show: function (id) {
-    console.log("I'm just getting warmed up!");
+    var that = this;
+    
+    var task = _(that.initialTasks).find(function (task) {
+      return task.id == id;
+    });
+    
+    var taskDetailView = new TD.Views.TaskDetailView({
+      model: task
+    });
+    
+    that.$rootEl.html(taskDetailView.render().$el);
   }
 });
