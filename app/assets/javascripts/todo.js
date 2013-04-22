@@ -6,9 +6,9 @@ window.TD = {
   Views: {},
   Routers: {},
   
-  initialize: function (rootEl, initialTasks) {
+  initialize: function (rootEl, tasks) {
     // startup a router
-    new TD.Routers.TasksRouter(rootEl, initialTasks);
+    new TD.Routers.TasksRouter(rootEl, tasks);
     // begin listening for navigation events
     Backbone.history.start();
   }

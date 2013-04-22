@@ -1,8 +1,8 @@
 // app/assets/javascripts/routers/tasks_router.js
 TD.Routers.TasksRouter = Backbone.Router.extend({
-  initialize: function (rootEl, initialTasks) {
+  initialize: function (rootEl, tasks) {
     this.$rootEl = $(rootEl);
-    this.initialTasks = initialTasks;
+    this.tasks = tasks;
   },
   
   routes: {
@@ -14,7 +14,7 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
     var that = this;
     
     var tasksListView = new TD.Views.TasksListView({
-      collection: that.initialTasks
+      collection: that.tasks
     });
     
     that.$rootEl.html(tasksListView.render().$el);
@@ -23,7 +23,7 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
   show: function (id) {
     var that = this;
     
-    var task = _(that.initialTasks).find(function (task) {
+    var task = _(that.tasks).find(function (task) {
       return task.id == id;
     });
     
