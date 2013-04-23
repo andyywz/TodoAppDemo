@@ -5,7 +5,7 @@ TD.Views.SidebarView = Backbone.View.extend({
     
     that.users = options.users;
     that.tasks = options.tasks;
-    that.choice = "users";
+    that.choice = "tasks";
     
     that.users.on("add", that.render, that);
     that.users.on("change", that.render, that);
@@ -21,14 +21,14 @@ TD.Views.SidebarView = Backbone.View.extend({
     "click button.users": "renderUsers"
   },
   
+  buttonChoices: {
+    "tasks": "Tasks",
+    "users": "Users"
+  },
+  
   render: function () {
     var that = this;
-    
-    var buttonChoices = {
-      "tasks": "Tasks",
-      "users": "Users"
-    };
-    
+
     var listContent = null;
     if (that.choice == "users") {
       listContent = JST["users/list"]({
@@ -36,15 +36,14 @@ TD.Views.SidebarView = Backbone.View.extend({
       });
     } else if (that.choice == "tasks") {
       listContent = JST["tasks/list"]({
-        buttonChoices: buttonChoices,
         tasks: that.tasks
       });
     }
     
     var renderedContent = JST["sidebar"]({
-      buttonChoices: buttonChoices,
+      buttonChoices: that.buttonChoices,
       listContent: listContent,
-      title: buttonChoices[that.choice]
+      title: that.buttonChoices[that.choice]
     });
 
     that.$el.html(renderedContent);
