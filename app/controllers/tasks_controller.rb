@@ -17,7 +17,7 @@ class TasksController < ApplicationController
     if params.include?(:user_id)
       @tasks = @tasks.where(:user_id => params[:user_id])
     end
-    @tasks = Task.all
+    @tasks = @tasks.all
 
     respond_to do |format|
       format.html { render :index } # entry-point for Backbone app
