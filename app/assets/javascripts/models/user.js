@@ -10,12 +10,13 @@ TD.Models.User = Backbone.RelationalModel.extend({
     collectionType: "TD.Collections.UserTasks",
     
     collectionOptions: function (user) {
-      return { user: use };
+      return { user: user };
     },
     
     reverseRelation: {
-      key: "user_id",
-      // includeInJSON: "id"
+      key: "user",
+      keySource: "user_id",
+      includeInJSON: "id"
     }
   }],
   
