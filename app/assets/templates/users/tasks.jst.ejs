@@ -1,0 +1,6 @@
+<!-- app/assets/templates/users/tasks.jst.ejs -->
+<ul>
+  <% user.get("tasks").each(function (task) { %>
+    <li><%= task.escape("title") %></li>
+  <% }); %>
+</ul>
