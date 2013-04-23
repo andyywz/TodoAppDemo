@@ -15,6 +15,7 @@ TD.Models.User = Backbone.RelationalModel.extend({
   relations: [{
     type: Backbone.HasMany,
     key: "tasks",
+    includeInJSON: false,
     relatedModel: "TD.Models.Task",
     collectionType: "TD.Collections.UserTasks",
     
@@ -24,6 +25,7 @@ TD.Models.User = Backbone.RelationalModel.extend({
     
     reverseRelation: {
       key: "user_id",
+      includeInJSON: "id"
     }
   }]
 });
