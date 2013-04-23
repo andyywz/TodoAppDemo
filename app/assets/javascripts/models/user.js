@@ -27,5 +27,11 @@ TD.Models.User = Backbone.RelationalModel.extend({
       key: "user_id",
       includeInJSON: "id"
     }
-  }]
+  }],
+  
+  full_name: function () {
+    var that = this;
+    
+    return that.escape("fname") + " " + that.escape("lname");
+  }
 });

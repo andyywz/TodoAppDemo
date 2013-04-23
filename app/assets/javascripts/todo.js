@@ -5,25 +5,28 @@ window.TD = {
   Collections: {},
   Views: {},
   Routers: {},
+  Store: {},
   
-  initialize: function ($sidebar, $content, tasksData) {
-    var tasks = new TD.Collections.Tasks(tasksData);
+  initialize: function ($sidebar, $content, tasksData, usersData) {
+    TD.Store.Tasks = new TD.Collections.Tasks(tasksData);
+    TD.Store.Users = new TD.Collections.Users(usersData);
 
-    this.installSidebar($sidebar, tasks);
+    this.installSidebar($sidebar);
     
     // startup a router
-    new TD.Routers.TasksRouter($content, tasks);
+    new TD.Routers.TasksRouter($content);
     // begin listening for navigation events
     Backbone.history.start();
   },
   
-  installSidebar: function ($sidebar, tasks) {
+  installSidebar: function ($sidebar) {
     var that = this;
     
-    var tasksListView = new TD.Views.TasksListView({
-      collection: tasks
+    var sidebarView = new TD.Views.SidebarView({
+      tasks: TD.Store.Tasks,
+      users: TD.Store.Users
     });
     
-    $sidebar.html(tasksListView.render().$el);
+    $sidebar.html(sidebarView.render("tasks").$el);
   }
 };

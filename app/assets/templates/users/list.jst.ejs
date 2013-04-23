@@ -1,0 +1,10 @@
+<!-- app/assets/templates/tasks/list.jst.ejs -->
+<ul>
+  <% users.each(function (user) { %>
+    <li class="user">
+      <a href="#/users/<%= user.escape("id") %>/tasks">
+        <%= user.full_name() %>
+      </a>
+    </li>
+  <% }); %>
+</ul>

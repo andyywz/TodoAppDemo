@@ -1,8 +1,7 @@
 // app/assets/javascripts/routers/tasks_router.js
 TD.Routers.TasksRouter = Backbone.Router.extend({
-  initialize: function ($rootEl, tasks) {
+  initialize: function ($rootEl) {
     this.$rootEl = $rootEl;
-    this.tasks = tasks;
   },
   
   routes: {
@@ -22,7 +21,7 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
     var that = this;
     
     var newTaskView = new TD.Views.NewTaskView({
-      collection: that.tasks
+      collection: TD.Store.Tasks
     });
     
     that.$rootEl.html(newTaskView.render().$el);
@@ -31,7 +30,7 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
   show: function (id) {
     var that = this;
     
-    var task = that.tasks.get(id);
+    var task = TD.Store.Tasks.get(id);
     var taskDetailView = new TD.Views.TaskDetailView({
       model: task
     });
@@ -41,26 +40,13 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
   
   indexUserTasks: function (userId) {
     var that = this;
-    
-    var user = new TD.Models.User({ id: userId });
+
+    var user = TD.Store.Users.get(userId);
     var userTasksView = new TD.Views.UserTasksView({ model: user });
     
-    async.parallel([
-      function (callback) {
-        user.fetch({
-          success: function () { callback(null, null) }
-        });
-      },
-      
-      function (callback) {
-        user.get("tasks").fetch({
-          success: function () { callback(null, null) }
-        });
-      }],
-      
-      function (errors, results) {
-        that.$rootEl.html(userTasksView.render().$el);
-      }
-    );
+    user.get("tasks").fetch()
+      .then(function (results) {
+        that.$rootEl.html(userTasksView.render().$el);        
+      });
   }
 });

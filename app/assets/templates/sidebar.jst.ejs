@@ -1,0 +1,9 @@
+<h1><%= sidebar_title %></h1>
+<ul class="sidebar-choices">
+  <% _(buttonChoices).each(function (buttonChoice) { %>
+    <button class="<%= buttonChoice %>"><%= buttonChoice %></button>
+  <% }); %>
+</ul>
+
+<div class="sidebar-content">
+</div>
