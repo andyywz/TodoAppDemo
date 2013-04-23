@@ -6,7 +6,7 @@
   $(function () {
     // start me up!
     
-    // Preload, or *bootstrap* initial task data.
+    // Preload, or *bootstrap* initial data.
     var tasksData = <%= Task.all.to_json.html_safe %>;
     var usersData = <%= User.all.to_json.html_safe %>;
     

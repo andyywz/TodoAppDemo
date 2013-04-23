@@ -5,19 +5,19 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
   },
   
   routes: {
-    "": "index",
-    "tasks/new": "new",
-    "tasks/:id": "show",
-    "users/:id/tasks": "indexUserTasks"
+    "": "tasksIndex",
+    "tasks/new": "tasksNew",
+    "tasks/:id": "taskShow",
+    "users/:id/tasks": "userTasksIndex"
   },
   
-  index: function () {
+  tasksIndex: function () {
     var that = this;
     
     that.$rootEl.empty();
   },
   
-  new: function () {
+  tasksNew: function () {
     var that = this;
     
     var newTaskView = new TD.Views.NewTaskView({
@@ -28,7 +28,7 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
     that.$rootEl.html(newTaskView.render().$el);
   },
   
-  show: function (id) {
+  taskShow: function (id) {
     var that = this;
     
     var task = TD.Store.Tasks.get(id);
@@ -39,7 +39,7 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
     that.$rootEl.html(taskDetailView.render().$el);
   },
   
-  indexUserTasks: function (userId) {
+  userTasksIndex: function (userId) {
     var that = this;
 
     var user = TD.Store.Users.get(userId);
