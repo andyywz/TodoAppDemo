@@ -44,10 +44,6 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
 
     var user = TD.Store.Users.get(userId);
     var userTasksView = new TD.Views.UserTasksView({ model: user });
-    
-    user.get("tasks").fetch()
-      .then(function (results) {
-        that.$rootEl.html(userTasksView.render().$el);        
-      });
+    that.$rootEl.html(userTasksView.render().$el);        
   }
 });

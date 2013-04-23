@@ -9,7 +9,7 @@ TD.Collections.UserTasks = Backbone.Collection.extend({
   }
 });
 
-TD.Models.User = Backbone.RelationalModel.extend({
+TD.Models.User = Backbone.Model.extend({
   urlRoot: "/users",
   
   relations: [{
