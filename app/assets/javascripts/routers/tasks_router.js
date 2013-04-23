@@ -21,7 +21,8 @@ TD.Routers.TasksRouter = Backbone.Router.extend({
     var that = this;
     
     var newTaskView = new TD.Views.NewTaskView({
-      collection: TD.Store.Tasks
+      collection: TD.Store.Tasks,
+      model: new TD.Models.Task()
     });
     
     that.$rootEl.html(newTaskView.render().$el);

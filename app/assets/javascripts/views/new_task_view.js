@@ -16,12 +16,12 @@ TD.Views.NewTaskView = Backbone.View.extend({
   submit: function () {
     var that = this;
     
-    var task = new TD.Models.Task({
+    that.model.set({
       title: that.$("input[name=task\\[title\\]]").val()
     });
     
-    that.collection.add(task);
-    task.save();
+    that.collection.add(that.model);
+    that.model.save();
     Backbone.history.navigate("#/");
   },
   
