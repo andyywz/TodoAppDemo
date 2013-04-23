@@ -13,7 +13,12 @@ class TasksController < ApplicationController
   end
 
   def index
+    @tasks = Task
+    if params.include?(:user_id)
+      @tasks = @tasks.where(:user_id => params[:user_id])
+    end
     @tasks = Task.all
+
     respond_to do |format|
       format.html { render :index } # entry-point for Backbone app
       format.json { render :json => @tasks }

@@ -1,4 +1,4 @@
 // app/assets/javascripts/models/task.js
-TD.Models.Task = Backbone.Model.extend({
+TD.Models.Task = Backbone.RelationalModel.extend({
   urlRoot: "/tasks"
 });
