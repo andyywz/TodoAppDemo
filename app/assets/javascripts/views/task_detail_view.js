@@ -9,5 +9,5 @@ TD.Views.TaskDetailView = Backbone.View.extend({
 
     that.$el.html(renderedContent);
     return that;
-  },
+  }
 });
